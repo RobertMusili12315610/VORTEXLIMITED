@@ -249,7 +249,8 @@ img {
     min-width: 220px !important;
     position: absolute;
     right: 15px;
-    top: 100%;
+    top: 50%;
+    top-margin: 200px;
 }
 .Home__img img{
 border-radius: 1rem;
