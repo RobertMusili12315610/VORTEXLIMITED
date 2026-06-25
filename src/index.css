@@ -1,0 +1,273 @@
+/* Migrated original styles */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+:root {
+    --Header-Height: 3rem;
+    --Font-Weight: 600;
+    --First-Color: #60a5fa; /* blue accent */
+    --Second-Color: #e6eefc; /* light text */
+    --Glass-bg: rgba(255,255,255,0.06);
+    --Glass-border: rgba(255,255,255,0.12);
+    --Body-Font: 'Poppins', sans-serif;
+    --Big-Font-Size: 2rem;
+    --H2-Font-Size: 1.25rem;
+    --Normal-Font-Size: 0.938rem;
+}
+
+@media screen and (min-width: 768px) {
+     :root {
+        --Big-Font-Size: 3.5rem;
+        --H2-Font-Size: 2rem;
+        --Normal-Font-Size: 1rem;
+    }
+}
+
+*,
+::before,
+::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    margin: var(--Header-Height) 0 0 0;
+    font-family: var(--Body-Font);
+    font-size: var(--Normal-Font-Size);
+    color: var(--Second-Color);
+    background: linear-gradient(135deg, #021428 0%, #013a63 60%, #0b5fa8 100%);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+h1,h2,p{ margin:0 }
+ul{ margin:0; padding:0; list-style:none }
+a{ text-decoration:none }
+img{ width:100%; height:auto; display:block }
+
+.Section__Title { position: relative; font-size: var(--H2-Font-Size); color: var(--First-Color); margin-top: 0.5rem; margin-bottom: 2rem; text-align: center }
+.Section__Title::after { position: absolute; content: ""; width: 64px; height: 0.18rem; left: 0; right: 0; margin: auto; top: 3rem; background-color: var(--First-Color) }
+.Section { padding-top: 3rem; padding-bottom: 2rem }
+
+.NavBar__Header { width:100%; position: fixed; top:0; left:0; z-index:9999; background: var(--Glass-bg); backdrop-filter: blur(8px); border-bottom: none; transition: top 0.3s ease; }
+.Menu__Backdrop { position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 9998; cursor: pointer; background: rgba(0, 0, 0, 0); pointer-events: auto; }
+.Grid { max-width:1024px; display:grid; grid-template-columns:100%; grid-column-gap:2rem; width:calc(100% - 2rem); margin-left:1rem; margin-right:1rem }
+.Work__Container { grid-template-columns: repeat(2, 1fr) !important; grid-column-gap: 0.5rem !important; }
+.Nav { height: var(--Header-Height); display:flex; justify-content:space-between; align-items:center; font-weight:var(--Font-Weight) }
+.NavBar__Logo { color: var(--First-Color); font-weight: 700; font-size: 1.1rem; }
+/* Mobile (default): hide links and show hamburger; menu slides in when .Show is added */
+.NavBar__Toggle { color: var(--Second-Color); font-size:1.5rem; cursor:pointer; display: block }
+.NavBar__Menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    padding-top: var(--Header-Height);
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 2rem;
+    background-color: transparent; /* translucent blurred overlay is provided by ::before */
+    z-index: 10001;
+    transition: 0.5s;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+.NavBar__List { display: flex; flex-direction: column; gap: 1rem }
+.NavBar__Item { margin-bottom: 0 }
+.NavBar__Link { color: var(--Second-Color); }
+.Show { right: 0 }
+
+/* Blurred backdrop behind the menu links to hide underlying content between pills */
+.NavBar__Menu::before {
+    content: "";
+    /* position overlay to cover only the links area */
+    position: absolute;
+    top: 0;
+    left: 2rem;
+    right: 2rem;
+    height: auto;
+    min-height: 24rem;
+    background: rgba(200,200,200,0.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 24px;
+    z-index: 10000;
+    pointer-events: none;
+}
+.NavBar__List { position: relative; z-index: 10002; }
+.NavBar__Menu .NavBar__Link { position: relative; z-index: 10003; background-clip: padding-box; }
+.NavBar__Menu .NavBar__Link.Active { /* bright blue when active */
+    background: linear-gradient(90deg, #60a5fa, #3b82f6);
+    color: #fff;
+    box-shadow: 0 12px 30px rgba(96,165,250,0.5);
+}
+
+
+/* Mobile: blue background for links inside hamburger */
+.NavBar__Menu .NavBar__Link {
+    display: block;
+    padding: 0.9rem 0;
+    width: 80%;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #013a63 0%, #0b5fa8 100%);
+    color: var(--Second-Color);
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(11,95,168,0.25);
+    transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.18s ease;
+}
+.NavBar__Menu .NavBar__Link:hover { transform: translateY(-3px); box-shadow: 0 10px 22px rgba(37,99,235,0.22); }
+
+/* Desktop: horizontal nav and hide hamburger */
+@media screen and (min-width: 769px) {
+    .NavBar__Toggle { display: none }
+    .NavBar__Menu {
+        position: static;
+        top: auto;
+        right: auto;
+        width: auto;
+        height: auto;
+        padding: 0;
+        background: transparent;
+        display: flex;
+        align-items: center;
+    }
+    .NavBar__Menu::before { display: none; }
+    .NavBar__List { display: flex; flex-direction: row; gap: 2.5rem; align-items: center }
+    .NavBar__Menu .NavBar__Link { 
+        display: inline; 
+        padding: 0; 
+        width: auto; 
+        margin: 0; 
+        background: none; 
+        border-radius: 0; 
+        text-align: left;
+        box-shadow: none; 
+        color: var(--Second-Color);
+        transition: none;
+    }
+    .NavBar__Menu .NavBar__Link.Active { color: var(--First-Color); background: none; }
+    .NavBar__Menu .NavBar__Link:hover { color: var(--First-Color); transform: none; }
+}
+
+/* Glass cards and buttons */
+.Home__Button__Contact {
+    display:inline-block;
+    background: linear-gradient(90deg, rgba(96,165,250,0.18), rgba(96,165,250,0.28));
+    color: var(--Second-Color);
+    padding:0.75rem 2.5rem;
+    font-weight:var(--Font-Weight);
+    border-radius:0.5rem;
+    border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(6px);
+}
+
+.Home {
+    height: calc(100vh - 3rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8rem;
+    padding: 2rem 1rem;
+}
+.Home__Data { flex: 1; display: flex; flex-direction: column; align-items: flex-start; }
+.Home__Title { font-size: var(--Big-Font-Size); margin-bottom: 1.5rem }
+.home__Title__color { color: var(--First-Color) }
+.Home__img {
+    flex: 0 0 340px;
+    width: 340px;
+    position: relative;
+}
+.Home__img img{ border-radius: 1rem; box-shadow: 0 8px 30px rgba(3,10,34,0.6) }
+.Home__Button__Contact { display:inline-block; background-color: var(--First-Color); color:white; padding:0.75rem 2.5rem; font-weight:var(--Font-Weight); border-radius:0.5rem; align-self: center; margin-top: -0.3rem }
+
+@media screen and (max-width: 768px) {
+    .Home {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.5rem;
+        height: auto;
+    }
+    .Home__Data { order: 1; width: 100%; }
+    .Home__img { order: 2; position: static; width: 100%; flex: none; margin-top: 1rem }
+    .Home__img img { width: 100%; height: auto }
+    .Home__Button__Contact { display: inline-block }
+}
+
+.About__Container { row-gap:2rem; text-align:center; grid-template-columns: 1fr !important; width: 100%; max-width: 600px; margin: 0 auto; }
+.About__Image { display: flex; justify-content: center; width: 100%; }
+.About__Image img { width:200px; border-radius:1rem; box-shadow: 0 8px 30px rgba(3,10,34,0.55) }
+
+@media screen and (min-width: 769px) {
+    .About__Container { grid-template-columns: 1fr !important; justify-items: center; max-width: 600px; margin: 0 auto; }
+    .About__Image { display: flex; justify-content: center; margin: 0 auto; }
+    .Work__Container { max-width: 600px !important; margin: 0 auto !important; }
+}
+
+.Contact__Input {
+    width:100%;
+    font-size:var(--Normal-Font-Size);
+    font-weight:var(--Font-Weight);
+    padding:1rem;
+    border-radius:0.75rem;
+    border:1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.03);
+    color: var(--Second-Color);
+    outline:none;
+    margin-bottom:1rem;
+    backdrop-filter: blur(4px);
+}
+.Contact__Button {
+    background: linear-gradient(90deg, var(--First-Color), #2563eb);
+    color: #ffffff;
+    padding:0.75rem 2.5rem;
+    font-weight:var(--Font-Weight);
+    border-radius:0.75rem;
+    cursor:pointer;
+    margin:0 auto;
+    display:block;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 8px 30px rgba(3,10,34,0.5);
+}
+.Contact__Container { grid-template-columns: 1fr !important; max-width: 600px !important; margin: 0 auto !important; }
+.Contact__Form { display: flex; flex-direction: column; gap: 1rem; }
+
+/* small extras from original inline styles */
+.work-card { height:160px; max-width:280px; display:block; position:relative; overflow:hidden; transition: transform .3s ease, box-shadow .3s ease; cursor:pointer; border-radius: 0.75rem; border: 1px solid var(--Glass-border); background: var(--Glass-bg); backdrop-filter: blur(6px) }
+.card-title { position:absolute; top:10px; left:10px; font-size:15px; font-weight:700; color:#fff; background:linear-gradient(90deg,#2563eb,#60a5fa); padding:6px 12px; z-index:2; border-radius:6px }
+.scroll-text { position:absolute; bottom:10px; white-space:nowrap; font-size:14px; font-weight:600; color:#fff; background:rgba(37,99,235,0.9); padding:6px 12px; animation: scroll-left 8s linear infinite; z-index:2; border-radius:6px }
+@keyframes scroll-left { from { right:-100% } to { right:100% } }
+
+.Footers {
+    text-align: center;
+    padding: 2rem 1rem;
+    border-top: 1px solid rgba(96, 165, 250, 0.2);
+    margin-top: 3rem;
+}
+
+.Footer__Title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--First-Color);
+    margin-bottom: 1rem;
+}
+
+.Footer__Social {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.Footer__Icon {
+    color: var(--First-Color);
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.Footer__Icon:hover {
+    transform: scale(1.2);
+}
+
+.Footers p {
+    color: var(--Second-Color);
+    font-size: 0.9rem;
+}
