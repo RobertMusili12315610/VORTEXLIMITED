@@ -180,12 +180,12 @@ export default function App() {
           <h2 className="Section__Title">OUR WORK</h2>
           <p style={{ textAlign: 'center', fontSize: '1rem', color: '#ffffff', maxWidth: '700px', margin: '0 auto 3rem auto' }}>Websites we've crafted for our clients; modern, responsive, and built to perform.</p>
           <div className="Work__Container Grid">
-            <a href="https://kamaudoreen.vercel.app/" target="_blank" rel="noopener" className="work-card">
+            <a href="" target="_blank" rel="noopener" className="work-card">
               <img src="/images/work1.png" alt="Project 1" />
               <span className="card-title">PORTFOLIO</span>
               <span className="scroll-text">CLICK THIS CARD TO VIEW THE PORTFOLIO</span>
             </a>
-            <a href="https://afiyabora.wuaze.com/" target="_blank" rel="noopener" className="work-card">
+            <a href="" target="_blank" rel="noopener" className="work-card">
               <img src="/images/work7.png" alt="Project 2" />
               <span className="card-title">HOSPITAL MANAGEMENT SYSTEM</span>
               <span className="scroll-text">CLICK THIS CARD TO VIEW THE HOSPITAL MANAGEMENT SYSTEM</span>
@@ -253,8 +253,8 @@ export default function App() {
         <footer className="Footers">
           <p className="Footer__Title">OUR SOCIAL MEDIA</p>
           <div className="Footer__Social">
-            <a href="https://www.tiktok.com/@vortexl1mited" className="Footer__Icon"><i className="bx bxl-tiktok"></i></a>
-            <a href="https://twitter.com/VORTEXL1MITED" className="Footer__Icon"><i className="bx bxl-twitter"></i></a>
+            <a href="" className="Footer__Icon"><i className="bx bxl-tiktok"></i></a>
+            <a href="" className="Footer__Icon"><i className="bx bxl-twitter"></i></a>
           </div>
           <p>© 2026 COPYRIGHT ALL RIGHT RESERVED</p>
         </footer>
