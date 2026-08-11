@@ -181,7 +181,7 @@ export default function App() {
           <p style={{ textAlign: 'center', fontSize: '1rem', color: '#ffffff', maxWidth: '700px', margin: '0 auto 3rem auto' }}>Websites we've crafted for our clients; modern, responsive, and built to perform.</p>
           <div className="Work__Container Grid">
             <a href="" target="_blank" rel="noopener" className="work-card">
-              <img src="/images/work1.png" alt="Project 1" />
+              <img src="/images/work1.jpeg" alt="Project 1" />
               <span className="card-title">PORTFOLIO</span>
               <span className="scroll-text">CLICK THIS CARD TO VIEW THE PORTFOLIO</span>
             </a>
